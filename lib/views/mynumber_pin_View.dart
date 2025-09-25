@@ -13,16 +13,7 @@ class MyNumberPinView extends StatefulWidget {
 }
 
 class _MyNumberPinViewState extends State<MyNumberPinView> {
-  final TextEditingController _controller = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
   String _pin = "";
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    _focusNode.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
