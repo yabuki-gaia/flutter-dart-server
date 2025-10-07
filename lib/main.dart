@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_server/views/passport_result_view.dart';
 import 'views/standy_view.dart';
-import 'views/passport_auh_view.dart';
+import 'views/passport_auth_view.dart';
 import 'views/mynumber_auth_view.dart';
 import 'views/mynumber_pin_View.dart';
 import 'api/version/v1/server.dart';
