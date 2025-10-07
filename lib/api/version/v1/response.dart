@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter_server/api/utils/logger.dart';
+
 class BaseResponse {
   final int statusCode;
   final String message;
@@ -16,10 +21,11 @@ class BaseResponse {
   };
 }
 
-class SuccessResponse extends BaseResponse {
-  SuccessResponse({
-    required super.statusCode,
-    required super.message,
-    required super.body,
-  });
+void jsonResponse(HttpRequest req, BaseResponse body) async {
+  log(req, body.statusCode);
+  req.response
+    ..statusCode = body.statusCode
+    ..headers.contentType = ContentType.json
+    ..write(jsonEncode(body.toJson()));
+  await req.response.close();
 }
