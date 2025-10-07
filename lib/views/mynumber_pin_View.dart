@@ -16,6 +16,24 @@ class _MyNumberPinViewState extends State<MyNumberPinView> {
   String _pin = "";
 
   @override
+  void initState() {
+    super.initState();
+    _pin = "";
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pin = "";
+  }
+
+  void _verifyPin() {
+    if (_pin.length == 4) {
+      // TODO: マイナンバーカードリーダーを呼び出す
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -59,11 +77,14 @@ class _MyNumberPinViewState extends State<MyNumberPinView> {
                   if (_pin.length < 4) {
                     _pin += key;
                   }
+                  _verifyPin();
                 });
               },
               onBackPressed: () {
                 setState(() {
-                  _pin = _pin.substring(0, _pin.length - 1);
+                  if (_pin.isNotEmpty) {
+                    _pin = _pin.substring(0, _pin.length - 1);
+                  }
                 });
               },
             ),
